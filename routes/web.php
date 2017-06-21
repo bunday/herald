@@ -14,16 +14,25 @@
 /*Route::get('/', function () {
     return view('welcome');
 });*/
+use App\Series;
 
 Route::group(['middleware'=> 'App\Http\Middleware\AdminMiddleware'], function(){
 	Route::get('/uploadmessage', function(){
-		return view('uploadmessage');
+		$series = Series::all();
+		return view('uploadmessage',['series'=>$series]);
 	});
+	Route::post('/addseries', 'HeraldController@addseries');
 });
 
 Route::post('/upload', 'HeraldController@messageupload');
 
 Route::get('/series', 'HeraldController@viewseries');
+
+Route::get('/seriesmessages{id}', 'HeraldController@viewmessages');
+
+Route::get('/singles', 'HeraldController@viewsingles');
+
+Route::post('/comment', 'HeraldController@uploadcomment');
 
 Auth::routes();
 

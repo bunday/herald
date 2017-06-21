@@ -11,16 +11,17 @@
                 <div class="panel-body">
                 <div class="row">
                     <div class="col-md-8">
-                       
-                        @foreach($series as $seris)
-                        <div>
+                    @foreach ($entry as $e)
+                    @if($e->id==5)
+                    @else
                         <table>
-                            <td>{{$series->id}}</td>  
-                            <td>{{$series->title}}</td>
+
+                            <td> 
+                                <a role="button" class="btn-link" href="/seriesmessages{{$e->id}}">{{$e->title}}</a> <br>
+                            </td>
                         </table>
-                          <h5><label class="text-info">{{$message->original_filename}}</label></h5><audio src="storage/{{$message->filename}}" id="{{$message->id}}" controls ></audio>
-                        </div>
-                        @endforeach
+                        @endif
+                        @endforeach  
                     </div>
                 </div>                   
                 </div>

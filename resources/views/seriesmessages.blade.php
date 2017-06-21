@@ -9,6 +9,7 @@
                 <div class="panel-heading">
                     <ol class="breadcrumb">
                         <li><a href="/home">Home</a></li>
+                        <li class="active">{{$s}}</li>
                     </ol>
                 </div>
 
@@ -19,15 +20,6 @@
                         @foreach($messages as $message)
                         <div>
                           <h5><label class="text-info">{{$message->original_filename}}</label></h5><audio src="storage/{{$message->filename}}" id="{{$message->id}}" controls ></audio>
-
-                        <h5 class="text-left">Comment</h5>
-                        <form action="/comment" method="POST" enctype="multipart/form-data">
-                        {{ csrf_field() }}
-
-                            <input type="text" name="name" placeholder="Name" class="form-control" required>
-                            <textarea name="comment" placeholder="Enter Comment Here" class="form-control" required></textarea><br>
-                            <button class="btn btn-primary btn-sm">Comment</button>
-                        </form>
                         </div>
                         @endforeach
                     </div>

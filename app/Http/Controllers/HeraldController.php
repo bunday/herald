@@ -8,6 +8,8 @@ use App\Fileentry;
 
 use App\Series;
 
+use App\Comment;
+
 use Illuminate\Support\Facades\Storage;
 
 use Illuminate\Support\Facades\Input;
@@ -15,6 +17,8 @@ use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\File;
 
 use Illuminate\Http\Response;
+
+use DB;
 
 
 
@@ -33,28 +37,52 @@ class HeraldController extends Controller
 
     public function messageupload() 
     {
-    	$theseries = new Series();
-    	$theseries->title = Input::get('title');
-    	$theseries->save();
-    	//$entry = Fileentry::where('series_id', $id)->get();
-
     	$entry = new Fileentry();
+        $entry->series_title = Input::get('series_title');
     	$file = Input::file('message');
     	$extension = $file->getClientOriginalExtension();
     	Storage::disk('public')->put($file->getClientOriginalName(), File::get($file));
     	$entry->mime = $file->getClientMimeType();
     	$entry->original_filename = $file->getClientOriginalName();
     	$entry->filename = $file->getClientOriginalName();
-    	//$entry->series_id = Input::get('series_id');
 
     	$entry->save();
     	
-    	return redirect('uploadmessage'.Input::get('series_id'));
+    	return redirect('uploadmessage');
+    }
+
+    public function addseries(){
+        $s = new Series();
+        $s->title = Input::get('newseries');
+        $s->save();
+        return redirect('/uploadmessage');
     }
 
     public function viewseries() 
     {
-    	$series = Series::all();
-    	return view('allseries', ['series' => $series]);
+        $entry = Series::all();
+        return view('allseries', ['entry' => $entry]);
+    }
+
+    public function viewmessages($id)
+    {
+        $s = Series::find($id)->title;
+        $messages = Fileentry::where('series_title', $id)->get();
+        return view('seriesmessages', ['s'=> $s, 'messages'=> $messages]);
+    }
+
+    public function viewsingles()
+    {
+        $messages = Fileentry::where('series_title', '5')->get();
+        return view('singlemessages', ['messages'=> $messages]);
+    }
+
+    public function uploadcomment()
+    {
+        $com = new Comment();
+        $com->name = Input::get('name');
+        $com->comment = Input::get('comment');
+        $com->save();
+        return redirect('/singles');  
     }
 }

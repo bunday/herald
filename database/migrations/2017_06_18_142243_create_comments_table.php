@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateFileentriesTable extends Migration
+class CreateCommentsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,10 @@ class CreateFileentriesTable extends Migration
      */
     public function up()
     {
-        Schema::create('fileentries', function (Blueprint $table) {
+        Schema::create('comments', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('filename');
-            $table->string('mime');
-            $table->string('original_filename');
-            $table->string('series_title');
+            $table->string('name');
+            $table->text('comment');
             $table->timestamps();
         });
     }
@@ -30,6 +28,6 @@ class CreateFileentriesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('fileentries');
+        Schema::dropIfExists('comments');
     }
 }

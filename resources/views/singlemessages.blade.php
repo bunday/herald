@@ -9,6 +9,7 @@
                 <div class="panel-heading">
                     <ol class="breadcrumb">
                         <li><a href="/home">Home</a></li>
+                        <li class="active">Singles</li>
                     </ol>
                 </div>
 
@@ -26,7 +27,7 @@
 
                             <input type="text" name="name" placeholder="Name" class="form-control" required>
                             <textarea name="comment" placeholder="Enter Comment Here" class="form-control" required></textarea><br>
-                            <button class="btn btn-primary btn-sm">Comment</button>
+                            <button class="btn btn-primary btn-sm">Comment</button><br><br>
                         </form>
                         </div>
                         @endforeach

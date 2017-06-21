@@ -50,14 +50,8 @@
 
                                 <ul class="dropdown-menu" role="menu">
                                     <li>
-                                        <a href="/series"
-                                            >
-                                            Series
-                                        </a>
-                                        <a href="/singles"
-                                            onclick="event.preventDefault();">
-                                            Singles
-                                        </a>
+                                        <a href="/series">Series</a>
+                                        <a href="/singles">Singles</a>
                                     </li>
                             </ul>
                             </li>
