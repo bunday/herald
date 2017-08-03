@@ -28,11 +28,18 @@ Route::post('/upload', 'HeraldController@messageupload');
 
 Route::get('/series', 'HeraldController@viewseries');
 
-Route::get('/seriesmessages{id}', 'HeraldController@viewmessages');
-
 Route::get('/singles', 'HeraldController@viewsingles');
 
+Route::get('/single/message{id}', 'HeraldController@viewsinglemsg');
+
+Route::get('/seriesmessages{id}', 'HeraldController@viewmessages');
+
+//Route::get('/seriesmessages{id}', 'HeraldController@seemessage');
+
+Route::get('/singles{id}', 'HeraldController@allsingles');
+
 Route::post('/comment', 'HeraldController@uploadcomment');
+Route::post('/commentsingle', 'HeraldController@uploadsinglecomment');
 
 Auth::routes();
 
