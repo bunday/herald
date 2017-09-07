@@ -24,6 +24,7 @@ Route::group(['middleware'=> 'App\Http\Middleware\AdminMiddleware'], function(){
 	Route::post('/addseries', 'HeraldController@addseries');
 });
 
+Route::get('/', 'HeraldController@newhome');
 Route::get('/newhome', 'HeraldController@newhome');
 
 Route::post('/upload', 'HeraldController@messageupload');
