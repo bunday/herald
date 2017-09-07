@@ -9,6 +9,7 @@
     <meta name="author" content="">
 
     <link href="css/main.css" rel="stylesheet" type="text/css">
+    <link href="css/timestyle.css" rel="stylesheet" type="text/css">
 </head>
 
 <body>
@@ -104,19 +105,19 @@
 
     </div>
 
-
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
     <script src="js/jquery.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/jquery.isotope.min.js"></script>
-    <script src="js/jquery.prettyPhoto.js"></script>
-    <script src="js/easing.js"></script>
-    <script src="js/jquery.ui.totop.js"></script>
-    <script src="js/ender.js"></script>
-    <script src="js/responsiveslides.min.js"></script>
-    <script src="js/owl.carousel.js"></script>
     <script src="js/jquery.fitvids.js"></script>
     <script src="js/jquery.plugin.js"></script>
     <script src="js/jquery.countdown.js"></script>
+    <script src="js/jquery.isotope.min.js"></script>
+    <script src="js/jquery.prettyPhoto.js"></script>
+    <script src="js/jquery.ui.totop.js"></script>
+    <script src="js/easing.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/ender.js"></script>
+    <script src="js/responsiveslides.min.js"></script>
+    <script src="js/owl.carousel.js"></script>
     <script src="js/countdown-custom.js"></script>
     <script src="js/wow.min.js"></script>
     <script src="js/custom.js"></script>

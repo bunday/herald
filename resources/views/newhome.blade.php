@@ -161,22 +161,30 @@
             </section>
 
             <section id="countdown-container" data-speed="5" data-type="background">
-            <script type="text/javascript">
-                window.onload = dothis()
-                function dothis(){
+            <script>
+                setTime = null;
+                var $ = jQuery;
+                $(function() {
+                    function setTimer (y,m,d) {
+                        $('#defaultCountdown').countdown({until: new Date(2017, 11-2, 10-2, 0)}); // year, month, date, hour
+                    }
+                    setTime = setTimer;
+                });		
+                function runtime() {
                     alert("ready!")
-                    setTimer(2017,10,15)
+                    setTime()
                 }
+                window.onload =runtime;
             </script>
                 <div class="container">
                     <div class="row text-center">
-                        <div class="col-md-6 wow fadeInLeft">
+                        <div class="col-md-3 wow fadeInLeft">
                             <h3>{{$thisevent->meetingname}}</h3>
-                            <span class="time">{{$thisevent->date}}</span>
+                            <span id="holder" class="time">{{$thisevent->date}}</span>
                         </div>
 
-                        <div  class="col-md-6 wow fadeInRight" data-wow-delay=".1200s">
-                            <div id="defaultCountdown"></div>
+                        <div  class="col-md-9 wow fadeInRight" data-wow-delay=".1200s">
+                            <div class="countdown" id="defaultCountdown"></div>
                         </div>
                     </div>
                 </div>
