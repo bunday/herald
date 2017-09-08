@@ -1,55 +1,42 @@
-@extends('layouts.app')
-
+@extends('layouts.mother')
 @section('content')
 
-<div class="container">
-    <div class="row">
-        <div class="col-md-8 col-md-offset-2">
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    <ol class="breadcrumb">
-                        <li><a href="/home">Home</a></li>
-                        <li class="active">Singles</li>
-                    </ol>
-                </div>
-
-                <div class="panel-body">
+<section id="subheader" data-speed="2" data-type="background">
+            <div class="container">
                 <div class="row">
-                    <div class="col-md-8">
-                       
-                        @foreach($messages as $message)
-                        <div>
-                          <h5><label class="text-info"><a href="/single/message{{$message->id}}">{{$message->original_filename}}</a></label></h5>
+                    <div class="col-md-12">
+
+                        <h1>SINGLE MESSAGES</h1>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="clearfix"></div>
+
+        <div id="content">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-10 col-md-offset-1">
+                        @foreach($messages as $msg)
+                        <div class="custom-col-3">
+                            <div class="left-col"></div>
+                            <div class="mid-col">
+                                <a href="#">
+                                    <h3>{{$msg->original_filename}}</h3>
+                                </a>
+                                    
+                            </div>
+                            <div class="right-col">
+                                <div class="details"><span>By: XX</span> <span>|</span><span><a href="/singlemessages{{$msg->id}}"> View comment</a></span></div>
+                            </div>
                         </div>
                         @endforeach
                     </div>
-                </div>                   
                 </div>
             </div>
         </div>
-    </div>
-</div>
-<script type="text/javascript">
-    function playsong(id){
-        alert("here")
-        this.showall();
-        var track = document.getElementById(myword);
-        track.play();
-        //alert(track);
-        
-    }
-    function stopsong(myword){
-        var track = document.getElementById(myword);
-        track.pause();
-        track.currentTime = 0;
-        //alert(track);
-        
-    }
-    function showall(){
-        var tracks = document.getElementsByTagName('audio');
-        for (var i = tracks.length - 1; i >= 0; i--) {
-            track[i].pause();
-        }
-    }
-</script>
+
+
 @endsection
+

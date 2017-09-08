@@ -1,55 +1,98 @@
-@extends('layouts.app')
+@extends('layouts.mother')
 
 @section('content')
 
-<div class="container">
-    <div class="row">
-        <div class="col-md-8 col-md-offset-2">
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    <ol class="breadcrumb">
-                        <li><a href="/home">Home</a></li>
-                        <li class="active">{{$s}}</li>
-                    </ol>
+<section id="subheader" data-speed="2" data-type="background">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+
+                        <h1>Sermons</h1>
+                    </div>
                 </div>
             </div>
-                <div class="col-md-5">
-                       
-                    @foreach($messages as $message)
-                       <div>
-                        <h5><label class="text-info">{{$message->original_filename}}</label></h5><audio src="storage/{{$message->filename}}" id="{{$message->id}}" controls ></audio>  
-                        </div>
+        </section>
+
+        <div class="clearfix"></div>
+
+        <div id="content">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-10 col-md-offset-1">
+                        <div class="row">
+                            <div class="col-md-7">
+                                @foreach($messages as $msg)
+                                <div class="custom-col-3">
+                                    <div class="left-col">
+                                    <a href="#">
+                                       <h3>{{$msg->original_filename}}</h3>
+                                    </a>
+                                    <!--<div class="details"><span>By <a href="#">John Rook</a>, October 12, 2014.</div>-->
+                                    </div>
+                                 <div class="mid-col">
+                                    <audio src="storage/{{$msg->filename}}" id="{{$msg->id}}" controls></audio>
+                                </div>
+                                <div class="right-col">
+                                    
+                                </div>
+                                </div>
                         @endforeach
-                </div>
-                    <div class="col-md-1"></div>
-                    <div class="col-md-6">
-                        <h5 class="text-center">Comment</h5>
-                            @foreach($comments as $c)
-                            <p class="box__text">{{$c->comment}}</p> - <small><i>{{$c->name}}</i>  {{$c->created_at->diffForHumans()}}</small>
-                            @endforeach
-
-                            <form action="/comment" method="POST" enctype="multipart/form-data">
-                            {{ csrf_field() }}
-
-                            <div class="form-group col-md-12">
-                            <input type="text" name="name" placeholder="Name" class="form-control" required>
-                            <input type="hidden" name="sid" value="{{$sid}}">
-                            <textarea name="comment" placeholder="Enter Comment Here" class="form-control" required></textarea><br>
                             </div>
-                            <div class="col-md-3"></div>
-                            <div class="col-md-6">
-                                <button class="btn btn-primary btn-sm">Add Comment</button>
+                            
+                            <div class="col-md-5">
+                                <div id="blog-comment">
+                                
+                                <h3><span>Comments</span></h3>
+                                @foreach ($comments as $c)
+                                    <ol>
+                                        <li>
+                                        <div class="avatar">
+                                            <img src="img/avatar.jpg" alt="" />
+                                        </div>
+                                        <div class="comment-info">
+                                            <span class="c_name">{{$c->name}}</span>
+                                            <div class="clearfix"></div>
+                                        </div>
+
+                                        <div class="comment">{{$c->comment}}  <span>|</span>
+                                        <span class="c_date"><i>{{$c->created_at->diffForHumans()}}</i></span>
+                                        </div>
+                                        </li>
+                                    </ol>
+                                @endforeach
+
+                            <div id="comment-form-wrapper">
+                                <h3>Leave a Comment</h3>
+                                <div class="comment_form_holder">
+                                    <form action="/comment" method="POST" enctype="multipart/form-data">
+                                    {{ csrf_field() }}
+
+                                        <label>Name <span class="req">*</span></label>
+                                        <input type="text" name="name" required class='form-control'><br>
+
+                                        <label>Comment</label>
+                                        <textarea cols="5" rows="5" name="comment" class="form-control"></textarea>
+                                        <br>
+                                        <input type="hidden" name="sid" value="{{$sid}}">
+
+                                        <p id="btnsubmit">
+                                            <input type="submit" value="Comment" class="btn btn-info" />
+                                        </p>
+                                    </form>
+                                </div>
                             </div>
-                            <div class="col-md-3"></div>
-                        </form>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                </div>                   
                 </div>
             </div>
         </div>
-    </div>
-</div>
-<script type="text/javascript">
+
+
+@endsection
+
+<!--<script type="text/javascript">
     function playsong(id){
         alert("here")
         this.showall();
@@ -71,5 +114,4 @@
             track[i].pause();
         }
     }
-</script>
-@endsection
+</script>-->

@@ -24,13 +24,15 @@ Route::group(['middleware'=> 'App\Http\Middleware\AdminMiddleware'], function(){
 	Route::post('/addseries', 'HeraldController@addseries');
 });
 
+Route::get('/newhome', 'HeraldController@newhome');
+
 Route::post('/upload', 'HeraldController@messageupload');
 
 Route::get('/series', 'HeraldController@viewseries');
 
 Route::get('/singles', 'HeraldController@viewsingles');
 
-Route::get('/single/message{id}', 'HeraldController@viewsinglemsg');
+Route::get('/singlemessages{id}', 'HeraldController@viewsinglemsg');
 
 Route::get('/seriesmessages{id}', 'HeraldController@viewmessages');
 
@@ -39,8 +41,43 @@ Route::get('/seriesmessages{id}', 'HeraldController@viewmessages');
 Route::get('/singles{id}', 'HeraldController@allsingles');
 
 Route::post('/comment', 'HeraldController@uploadcomment');
+
 Route::post('/commentsingle', 'HeraldController@uploadsinglecomment');
+
+Route::get('/article', 'HeraldController@articleupload');
+
+Route::post('/articlesupload', 'HeraldController@uploadarticles');
+
+Route::get('/viewarticles', 'HeraldController@allarticles');
+
+Route::get('/viewarticle{id}', 'HeraldController@eacharticle');
+
+Route::get('/delete{id}', 'HeraldController@deletearticle');
+
+Route::post('/articlecomment', 'HeraldController@commentarticle');
+
+//Route::get('/articlecomment', 'HeraldController@showcomment');
+
+Route::get('/news', 'HeraldController@news');
+
+Route::get('/news-single.html', 'HeraldController@viewarticle'); 
+
+Route::get('/uploadpic', 'HeraldController@picupload');
+
+Route::post('/gallery', 'HeraldController@savepic');
+
+Route::get('/gallery', 'HeraldController@showpics');
+
+Route::get('picdelete{id}', 'HeraldController@deletepic');
+
+Route::get('/events', 'HeraldController@showevents'); 
+
+Route::get('/addevent', 'HeraldController@addanevent');
+
+Route::post('/addevents', 'HeraldController@saveanevent');
+
+Route::get('/contact', 'HeraldController@viewcontact');
 
 Auth::routes();
 
-Route::get('/', 'HeraldController@index')->name('home');
+Route::get('/home', 'HeraldController@index')->name('home');

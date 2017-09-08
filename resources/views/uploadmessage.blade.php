@@ -5,14 +5,14 @@
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
-                <div class="panel-heading">Messages</div>
+                <div class="panel-heading"><h4 class="text-info text-center">Message</h4></div>
 
                 <div class="panel-body">
                 <div class="row">
                     <div class="col-md-7">
-                        <h4>Upload a Message</h4>
+                        <h5 class="text-center">Upload a Message</h5>
                         <form action="/upload" method="POST" enctype="multipart/form-data">
-                    {{ csrf_field() }}
+                        {{ csrf_field() }}
                     
                     <select class="form-control" name="series_title">
                         @foreach($series as $s)
@@ -46,5 +46,5 @@
             </div>
         </div>
     </div>
-</div>
+    
 @endsection
