@@ -161,26 +161,12 @@
             </section>
 
             <section id="countdown-container" data-speed="5" data-type="background">
-            <script>
-                setTime = null;
-                var $ = jQuery;
-                $(function() {
-                    function setTimer (y,m,d) {
-                        $('#defaultCountdown').countdown({until: new Date(2017, 11-2, 10-2, 0)}); // year, month, date, hour
-                    }
-                    setTime = setTimer;
-                });		
-                function runtime() {
-                    alert("ready!")
-                    setTime()
-                }
-                window.onload =runtime;
-            </script>
                 <div class="container">
                     <div class="row text-center">
                         <div class="col-md-3 wow fadeInLeft">
                             <h3>{{$thisevent->meetingname}}</h3>
-                            <span id="holder" class="time">{{$thisevent->date}}</span>
+                            <span class="time">{{ Carbon\Carbon::parse($thisevent->date)->toFormattedDateString()  }}</span>
+                            <span style="display:none;" id="holder" class="time">{{$thisevent->date}}</span>
                         </div>
 
                         <div  class="col-md-9 wow fadeInRight" data-wow-delay=".1200s">
